@@ -47,10 +47,15 @@ body {
 .bg-gradient-2 {
     position: fixed;
     border-radius: 50%;
-    filter: blur(120px);
+    /* Reduced blur for better mobile performance */
+    filter: blur(60px);
     opacity: 0.4;
     z-index: -2;
     animation: float 20s infinite ease-in-out alternate;
+    /* Hardware acceleration hint */
+    will-change: transform;
+    /* Prevent painting issues */
+    transform: translateZ(0);
 }
 
 .bg-gradient-1 {
@@ -82,9 +87,11 @@ body {
 
 /* Glassmorphism Utilities */
 .glass {
-    background: rgba(17, 25, 40, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(17, 25, 40, 0.85);
+    /* Slightly more opaque fallback */
+    backdrop-filter: blur(12px);
+    /* Reduced from 16px */
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.125);
 }
 
