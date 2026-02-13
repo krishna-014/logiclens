@@ -601,3 +601,21 @@ body {
     margin-bottom: 12px;
     padding: 16px;
 }
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+
+    .bg-gradient-1,
+    .bg-gradient-2 {
+        width: 250px;
+        height: 250px;
+        filter: blur(40px);
+        opacity: 0.25;
+    }
+
+    .glass,
+    .glass-card {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+}
