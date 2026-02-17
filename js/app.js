@@ -146,7 +146,7 @@ async function startAnalysis(imageData) {
     }, 800);
 
     try {
-        const response = await fetch('/solve', {
+        const response = await fetch('http://localhost:3000/solve', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
