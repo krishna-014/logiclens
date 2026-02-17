@@ -145,8 +145,13 @@ async function startAnalysis(imageData) {
         stepIndex++;
     }, 800);
 
+    // Determine API URL based on environment
+    const API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? 'http://localhost:3000'
+        : 'https://logiclens-api.onrender.com'; // Placeholder until deployed
+
     try {
-        const response = await fetch('http://localhost:3000/solve', {
+        const response = await fetch(`${API_BASE_URL}/solve`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
