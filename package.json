@@ -8,7 +8,7 @@
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
     "test": "node --experimental-vm-modules test/test-solve.js",
-    "deploy": "gh-pages -d ."
+    "deploy": "node scripts/deploy.js"
   },
   "dependencies": {
     "@huggingface/inference": "^4.13.12",
