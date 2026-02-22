@@ -93,17 +93,29 @@ async function tryVisionSolve(base64Image) {
                 },
                 {
                     type: 'text',
-                    text: `You are an expert math and science tutor. Look at this image carefully.
+                    text: `You are a world-class math and science tutor who explains things so clearly that even a 10-year-old can follow along. Look at this image very carefully.
 
-1. First, read and extract any text, equations, or problems shown in the image.
-2. Then solve the problem step by step.
+YOUR TASK:
+1. Read and extract the EXACT problem, equation, or question shown in the image. Be precise — copy every symbol, number, and operator exactly.
+2. Solve the problem CORRECTLY with full mathematical rigor. Double-check your arithmetic and algebra.
+3. Show EVERY step of working — do NOT skip any calculation. Each step should be one clear action.
+4. Explain each step in simple, friendly language that any student can understand.
+5. Verify your final answer by substituting back or checking the logic.
 
-Respond ONLY with valid JSON in this exact format:
+RULES FOR STEPS:
+- Write at least 5 detailed steps (more if the problem is complex).
+- Each step must show the math/formula AND a simple explanation of what you are doing and why.
+- Use phrases like "First, let's...", "Now we...", "This means...", "So we get..."
+- If using a math property or formula, name it AND explain what it does in simple words.
+- NEVER skip intermediate calculations. Show every line of working.
+- The final step must clearly state the final answer.
+
+Respond ONLY with valid JSON in this exact format (no extra text before or after):
 {
-  "previewText": "the problem as you read it from the image",
-  "answer": "the final answer",
-  "steps": ["step 1", "step 2", "step 3"],
-  "explanation": "concept explanation"
+  "previewText": "the problem exactly as written in the image",
+  "answer": "the final answer (use proper math notation like π/4, √2, etc.)",
+  "steps": ["Step 1: [what you do] — [simple explanation]", "Step 2: ...", "..."],
+  "explanation": "A simple, friendly summary of the concept used and why the answer makes sense"
 }`
                 }
             ]
@@ -113,7 +125,7 @@ Respond ONLY with valid JSON in this exact format:
     for (const model of VISION_MODELS) {
         try {
             logger.info(`Trying vision model: ${model}`);
-            const content = await chatCompletion(model, messages, 600, VISION_TIMEOUT_MS);
+            const content = await chatCompletion(model, messages, 1200, VISION_TIMEOUT_MS);
             if (content && content.length > 10) {
                 return parseResponse(content);
             }
@@ -135,23 +147,30 @@ async function textOnlySolve(problemText) {
     const messages = [
         {
             role: 'user',
-            content: `You are an expert math and science tutor.
+            content: `You are a world-class math and science tutor who explains things so clearly that even a 10-year-old can follow along.
 
 Problem: "${problemText}"
 
-Please solve this step by step, then provide:
+SOLVE THIS STEP BY STEP:
+1. Solve the problem CORRECTLY with full mathematical rigor. Double-check your work.
+2. Show EVERY step of working — do NOT skip any calculation.
+3. Each step should show the math AND a simple explanation of what you are doing.
+4. Write at least 5 detailed steps. Use friendly language like "First, let's...", "Now we...", "This gives us...".
+5. If using a formula or property, name it AND explain what it does simply.
+6. The final step must clearly state the final answer.
+7. Verify your answer before responding.
 
-Respond ONLY with valid JSON in this exact format:
+Respond ONLY with valid JSON in this exact format (no extra text):
 {
-  "answer": "the final answer",
-  "steps": ["step 1", "step 2", "step 3"],
-  "explanation": "concept explanation"
+  "answer": "the final answer (use proper math notation)",
+  "steps": ["Step 1: [action] — [explanation]", "Step 2: ...", "..."],
+  "explanation": "A simple, friendly summary of the concept and why the answer makes sense"
 }`
         }
     ];
 
     logger.info(`Text LLM solving: "${problemText.substring(0, 80)}"`);
-    const content = await chatCompletion(TEXT_LLM, messages, 600);
+    const content = await chatCompletion(TEXT_LLM, messages, 1200);
     return parseResponse(content, problemText);
 }
 

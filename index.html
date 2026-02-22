@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogicLens - AI Problem Solver</title>
+    <title>LogicLens - Enterprise AI Intelligence</title>
     <meta name="description"
-        content="Instant AI-powered solver for math and science problems. Scan, solve, and understand.">
+        content="LogicLens transforms raw data into actionable intelligence using advanced AI models, real-time analytics, and intelligent pattern recognition.">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons (Phosphor Icons) -->
@@ -22,22 +22,142 @@
 </head>
 
 <body>
-    <div id="app">
-        <!-- Background Elements -->
-        <div class="bg-gradient-1"></div>
-        <div class="bg-gradient-2"></div>
-        <div class="glass-overlay"></div>
-
-        <!-- Navigation -->
-        <nav class="navbar glass">
-            <div class="logo">
-                <i class="ph ph-aperture"></i>
-                <span>LogicLens</span>
+    <!-- ===== SPLASH INTRO SCREEN ===== -->
+    <div id="splash-screen">
+        <div class="splash-bg-gradient"></div>
+        <div class="splash-particles" id="splash-particles"></div>
+        <div class="splash-center">
+            <div class="splash-logo-wrapper" id="splash-logo">
+                <!-- Eyelid overlays (eye-shaped) -->
+                <svg class="eyelid eyelid-top" id="eyelid-top" viewBox="0 0 200 80" preserveAspectRatio="none">
+                    <path d="M0,0 L200,0 L200,80 Q100,0 0,80 Z" fill="#06142E" />
+                </svg>
+                <svg class="eyelid eyelid-bottom" id="eyelid-bottom" viewBox="0 0 200 80" preserveAspectRatio="none">
+                    <path d="M0,80 L200,80 L200,0 Q100,80 0,0 Z" fill="#06142E" />
+                </svg>
+                <!-- Main Eye Logo SVG -->
+                <svg class="splash-logo-svg" width="180" height="100" viewBox="0 0 200 110" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="splashGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00E1FF" />
+                            <stop offset="100%" stop-color="#008CFF" />
+                        </linearGradient>
+                        <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#00E1FF" />
+                            <stop offset="60%" stop-color="#008CFF" />
+                            <stop offset="100%" stop-color="#0055AA" />
+                        </radialGradient>
+                        <filter id="splashGlow">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <filter id="irisGlow">
+                            <feGaussianBlur stdDeviation="4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Eye outline (almond shape) -->
+                    <path d="M10,55 Q100,-15 190,55 Q100,125 10,55 Z" stroke="url(#splashGrad1)" stroke-width="3"
+                        fill="none" filter="url(#splashGlow)" />
+                    <!-- Inner eye white area -->
+                    <path d="M25,55 Q100,5 175,55 Q100,105 25,55 Z" fill="rgba(255,255,255,0.03)"
+                        stroke="rgba(0,225,255,0.15)" stroke-width="1" />
+                    <!-- Iris -->
+                    <circle cx="100" cy="55" r="28" fill="url(#irisGrad)" opacity="0.25" filter="url(#irisGlow)" />
+                    <circle cx="100" cy="55" r="28" stroke="url(#splashGrad1)" stroke-width="2" fill="none"
+                        opacity="0.6" />
+                    <!-- Iris detail rings -->
+                    <circle cx="100" cy="55" r="22" stroke="#00E1FF" stroke-width="0.5" fill="none" opacity="0.3" />
+                    <circle cx="100" cy="55" r="16" stroke="#008CFF" stroke-width="0.5" fill="none" opacity="0.2" />
+                    <!-- Pupil -->
+                    <circle cx="100" cy="55" r="12" fill="url(#splashGrad1)" opacity="0.9" filter="url(#irisGlow)" />
+                    <circle cx="100" cy="55" r="6" fill="#020b1c" />
+                    <!-- Eye highlight / lens flare -->
+                    <circle cx="92" cy="47" r="4" fill="#fff" opacity="0.9" />
+                    <circle cx="108" cy="52" r="2" fill="#fff" opacity="0.5" />
+                    <!-- Subtle lash accents -->
+                    <line x1="15" y1="50" x2="5" y2="42" stroke="#00E1FF" stroke-width="1.5" opacity="0.3"
+                        stroke-linecap="round" />
+                    <line x1="185" y1="50" x2="195" y2="42" stroke="#008CFF" stroke-width="1.5" opacity="0.3"
+                        stroke-linecap="round" />
+                    <line x1="30" y1="35" x2="22" y2="25" stroke="#00E1FF" stroke-width="1.5" opacity="0.2"
+                        stroke-linecap="round" />
+                    <line x1="170" y1="35" x2="178" y2="25" stroke="#008CFF" stroke-width="1.5" opacity="0.2"
+                        stroke-linecap="round" />
+                </svg>
+                <!-- Outer glow ring -->
+                <div class="splash-ring-pulse"></div>
             </div>
-            <div class="nav-links">
-                <button class="nav-btn active" data-view="home"><i class="ph ph-house"></i></button>
-                <button class="nav-btn" data-view="history"><i class="ph ph-clock-counter-clockwise"></i></button>
-                <button class="nav-btn" data-view="settings"><i class="ph ph-gear"></i></button>
+            <h2 class="splash-title">LogicLens</h2>
+            <p class="splash-hint">Initializing...</p>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="background-gradient"></div>
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div id="particles-container"></div>
+
+    <!-- Global App Container -->
+    <div id="app">
+
+        <!-- Navbar -->
+        <nav class="navbar glass">
+            <div class="nav-content">
+                <div class="logo">
+                    <svg class="logo-icon-svg" width="44" height="26" viewBox="0 0 200 110" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="navGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00E1FF" />
+                                <stop offset="100%" stop-color="#008CFF" />
+                            </linearGradient>
+                            <radialGradient id="navIrisGrad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#00E1FF" />
+                                <stop offset="60%" stop-color="#008CFF" />
+                                <stop offset="100%" stop-color="#0055AA" />
+                            </radialGradient>
+                            <filter id="navGlow">
+                                <feGaussianBlur stdDeviation="2" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Eye outline -->
+                        <path d="M10,55 Q100,-15 190,55 Q100,125 10,55 Z" stroke="url(#navGrad1)" stroke-width="4"
+                            fill="none" filter="url(#navGlow)" />
+                        <!-- Iris -->
+                        <circle cx="100" cy="55" r="26" fill="url(#navIrisGrad)" opacity="0.2" />
+                        <circle cx="100" cy="55" r="26" stroke="url(#navGrad1)" stroke-width="2" fill="none"
+                            opacity="0.5" />
+                        <!-- Pupil -->
+                        <circle cx="100" cy="55" r="11" fill="url(#navGrad1)" opacity="0.9" filter="url(#navGlow)" />
+                        <circle cx="100" cy="55" r="5" fill="#020b1c" />
+                        <!-- Highlight -->
+                        <circle cx="94" cy="49" r="3" fill="#fff" opacity="0.85" />
+                    </svg>
+                    <span>LogicLens</span>
+                </div>
+
+                <!-- Center Menu -->
+                <div class="nav-menu">
+                    <button class="nav-btn active" data-view="home">Platform</button>
+                    <button class="nav-btn" data-view="history">History</button>
+                    <button class="nav-btn" data-view="settings">Settings</button>
+                </div>
+
             </div>
         </nav>
 
@@ -45,126 +165,567 @@
         <main id="main-content">
             <!-- Home View -->
             <section id="view-home" class="view active">
-                <div class="hero">
-                    <h1 class="animate-text">Scan. Solve. <span class="highlight">Learn.</span></h1>
-                    <p class="subtitle">AI-powered instant solutions for Math & Science.</p>
-                </div>
 
-                <div class="scan-area">
-                    <div class="scanner-frame glass-card">
-                        <div class="corner talk-bubble">
-                            <span>Tap to Scan</span>
+                <!-- HERO SECTION -->
+                <div class="hero-section">
+                    <!-- Left Side: Text & Actions -->
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="dot"></span> AI-Powered Analytics Platform
                         </div>
-                        <div class="scan-animation"></div>
-                        <button id="scan-btn" class="c-btn primary-glow">
-                            <i class="ph ph-camera"></i>
-                        </button>
-                        <input type="file" id="file-upload" accept="image/*" hidden>
-                        <button id="upload-btn" class="c-btn secondary small">
-                            <i class="ph ph-image"></i>
-                        </button>
+                        <h1 class="hero-title">
+                            AI-Powered Intelligence <br>
+                            <span class="gradient-text">for Smarter Decisions.</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            LogicLens transforms raw data into actionable intelligence using advanced AI models,
+                            real-time analytics, and intelligent pattern recognition to help organizations make smarter,
+                            faster decisions.
+                        </p>
+                    </div>
+
+                    <!-- Right Side: Scanner Interface (Functional) -->
+                    <div class="hero-visual">
+                        <div class="glass-card scanner-wrapper">
+                            <!-- Functional Scanner Components (Preserved IDs) -->
+                            <div class="scan-area">
+                                <div class="scanner-frame">
+                                    <div class="scan-overlay">
+                                        <div class="scan-line"></div>
+                                        <div class="corner-marker tl"></div>
+                                        <div class="corner-marker tr"></div>
+                                        <div class="corner-marker bl"></div>
+                                        <div class="corner-marker br"></div>
+                                    </div>
+
+                                    <div class="scanner-content">
+                                        <div class="scanner-status">
+                                            <span class="status-dot"></span> AI Monitoring Active
+                                        </div>
+
+                                        <!-- Main Interaction Buttons -->
+                                        <div class="scanner-controls">
+                                            <button id="scan-btn" class="scan-trigger-btn">
+                                                <i class="ph ph-camera"></i>
+                                                <div class="pulse-ring"></div>
+                                            </button>
+                                            <p class="scan-instruction">Analyzing Live Feed</p>
+                                        </div>
+
+                                        <!-- File Upload (Hidden + Trigger) -->
+                                        <input type="file" id="file-upload" accept="image/*" hidden>
+                                        <button id="upload-btn" class="upload-trigger-btn">
+                                            <i class="ph ph-upload-simple"></i>
+                                            <span>Upload Footage</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Floating Backdrop Elements -->
+                        <div class="visual-backdrop"></div>
                     </div>
                 </div>
 
-                <div class="recent-scans glass-card">
-                    <h3>Recent</h3>
-                    <div class="scans-list" id="recent-scans-list">
-                        <!-- Populated by JS -->
-                        <div class="empty-state">No recent scans</div>
+
+                <!-- HOW IT WORKS — Animated Steps -->
+                <div class="how-it-works">
+                    <h2 class="section-heading">How <span class="gradient-text">LogicLens</span> Works</h2>
+                    <p class="section-subtext">Snap a photo of any math or science problem and get step-by-step AI
+                        solutions instantly.</p>
+
+                    <div class="steps-flow">
+                        <!-- Step 1 -->
+                        <div class="flow-step glass-panel" data-step="1">
+                            <div class="flow-step-number">01</div>
+                            <div class="flow-step-icon"><i class="ph ph-camera"></i></div>
+                            <h3>Upload Your Question</h3>
+                            <p>Take a photo or upload an image of any handwritten or printed math, physics, or chemistry
+                                problem.</p>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="flow-connector">
+                            <div class="flow-dot"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flow-step glass-panel" data-step="2">
+                            <div class="flow-step-number">02</div>
+                            <div class="flow-step-icon"><i class="ph ph-brain"></i></div>
+                            <h3>AI Solves It</h3>
+                            <p>Our AI reads the problem using OCR, understands the context, and generates a detailed
+                                step-by-step solution.</p>
+                        </div>
+
+                        <!-- Connector -->
+                        <div class="flow-connector">
+                            <div class="flow-dot"></div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flow-step glass-panel" data-step="3">
+                            <div class="flow-step-number">03</div>
+                            <div class="flow-step-icon"><i class="ph ph-graduation-cap"></i></div>
+                            <h3>Learn &amp; Understand</h3>
+                            <p>Review each step with clear explanations so you don't just get the answer — you
+                                understand the method.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT HOLDERS — 3D Carousel -->
+                <div class="team-section" style="margin-top: 80px;">
+                    <h2 class="section-heading">Meet the <span class="gradient-text">Team</span></h2>
+                    <p class="section-subtext">The brilliant minds behind LogicLens — building the future of AI-powered
+                        problem solving.</p>
+
+                    <div class="carousel-3d-wrapper" id="team-carousel">
+                        <!-- 3D Scene -->
+                        <div class="carousel-3d-scene">
+                            <div class="carousel-3d-track" id="carousel-track">
+
+                                <!-- Holder 1 -->
+                                <div class="carousel-3d-slide active" data-index="0">
+                                    <div class="holder-card glass-panel">
+                                        <div class="holder-glow"></div>
+                                        <div class="holder-avatar-ring">
+                                            <div class="holder-avatar">
+                                                <div class="avatar-initials">H1</div>
+                                            </div>
+                                            <div class="avatar-orbit"></div>
+                                        </div>
+                                        <h3 class="holder-name">Holder 1</h3>
+                                        <span class="holder-role">Lead Developer & Architect</span>
+                                        <p class="holder-bio">Visionary developer who designed the core architecture of
+                                            LogicLens. Specializes in AI integration, OCR pipelines, and building
+                                            scalable intelligent systems.</p>
+                                        <div class="holder-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">50+</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">AI/ML</span>
+                                                <span class="stat-label">Focus</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">Core</span>
+                                                <span class="stat-label">Module</span>
+                                            </div>
+                                        </div>
+                                        <div class="holder-socials">
+                                            <a href="#" class="social-link"><i class="ph ph-github-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-linkedin-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-envelope-simple"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Holder 2 -->
+                                <div class="carousel-3d-slide" data-index="1">
+                                    <div class="holder-card glass-panel">
+                                        <div class="holder-glow"></div>
+                                        <div class="holder-avatar-ring">
+                                            <div class="holder-avatar">
+                                                <div class="avatar-initials">H2</div>
+                                            </div>
+                                            <div class="avatar-orbit"></div>
+                                        </div>
+                                        <h3 class="holder-name">Holder 2</h3>
+                                        <span class="holder-role">Frontend Engineer & UI Designer</span>
+                                        <p class="holder-bio">Creative frontend engineer responsible for LogicLens's
+                                            stunning visual identity. Expert in CSS animations, glassmorphism, and
+                                            crafting premium user experiences.</p>
+                                        <div class="holder-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">40+</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">UI/UX</span>
+                                                <span class="stat-label">Focus</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">Design</span>
+                                                <span class="stat-label">Module</span>
+                                            </div>
+                                        </div>
+                                        <div class="holder-socials">
+                                            <a href="#" class="social-link"><i class="ph ph-github-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-linkedin-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-envelope-simple"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Holder 3 -->
+                                <div class="carousel-3d-slide" data-index="2">
+                                    <div class="holder-card glass-panel">
+                                        <div class="holder-glow"></div>
+                                        <div class="holder-avatar-ring">
+                                            <div class="holder-avatar">
+                                                <div class="avatar-initials">H3</div>
+                                            </div>
+                                            <div class="avatar-orbit"></div>
+                                        </div>
+                                        <h3 class="holder-name">Holder 3</h3>
+                                        <span class="holder-role">Backend Engineer & API Specialist</span>
+                                        <p class="holder-bio">Backend powerhouse who built the server infrastructure and
+                                            API layer. Specializes in Node.js, RESTful services, and connecting AI
+                                            models to production systems.</p>
+                                        <div class="holder-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">45+</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">API</span>
+                                                <span class="stat-label">Focus</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">Server</span>
+                                                <span class="stat-label">Module</span>
+                                            </div>
+                                        </div>
+                                        <div class="holder-socials">
+                                            <a href="#" class="social-link"><i class="ph ph-github-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-linkedin-logo"></i></a>
+                                            <a href="#" class="social-link"><i class="ph ph-envelope-simple"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <button class="carousel-3d-nav prev" id="carousel-prev" aria-label="Previous slide">
+                            <i class="ph ph-caret-left"></i>
+                        </button>
+                        <button class="carousel-3d-nav next" id="carousel-next" aria-label="Next slide">
+                            <i class="ph ph-caret-right"></i>
+                        </button>
+
+                        <!-- Dots -->
+                        <div class="carousel-3d-dots" id="carousel-dots">
+                            <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                            <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+                            <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Analyzing View -->
+            <!-- ANALYZING VIEW — Animated Character -->
             <section id="view-analyzing" class="view">
                 <div class="analyzing-container">
-                    <div class="loader-circle">
-                        <div class="inner-circle"></div>
+                    <!-- Animated Character -->
+                    <div class="ai-character" id="ai-character">
+                        <!-- Thought Bubbles (thinking state) -->
+                        <div class="thought-bubbles" id="thought-bubbles">
+                            <span class="bubble b1">?</span>
+                            <span class="bubble b2">?</span>
+                            <span class="bubble b3">?</span>
+                        </div>
+                        <!-- Lightbulb (eureka state) -->
+                        <div class="eureka-bulb" id="eureka-bulb">
+                            <svg width="40" height="50" viewBox="0 0 40 50">
+                                <circle cx="20" cy="18" r="14" fill="#FFD93D" opacity="0.9" />
+                                <rect x="15" y="30" width="10" height="8" rx="2" fill="#CCC" />
+                                <rect x="16" y="38" width="8" height="3" rx="1" fill="#AAA" />
+                                <!-- Rays -->
+                                <line x1="20" y1="0" x2="20" y2="3" stroke="#FFD93D" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="4" y1="10" x2="7" y2="12" stroke="#FFD93D" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="36" y1="10" x2="33" y2="12" stroke="#FFD93D" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="0" y1="22" x2="3" y2="22" stroke="#FFD93D" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="40" y1="22" x2="37" y2="22" stroke="#FFD93D" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </div>
+
+                        <!-- Character Body -->
+                        <div class="char-body">
+                            <!-- Head -->
+                            <div class="char-head">
+                                <!-- Antenna -->
+                                <div class="char-antenna">
+                                    <div class="antenna-ball"></div>
+                                </div>
+                                <!-- Face -->
+                                <div class="char-face">
+                                    <!-- Eyebrows -->
+                                    <div class="char-eyebrow left" id="brow-left"></div>
+                                    <div class="char-eyebrow right" id="brow-right"></div>
+                                    <!-- Eyes -->
+                                    <div class="char-eyes">
+                                        <div class="char-eye left">
+                                            <div class="char-pupil"></div>
+                                        </div>
+                                        <div class="char-eye right">
+                                            <div class="char-pupil"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Mouth -->
+                                    <div class="char-mouth" id="char-mouth"></div>
+                                </div>
+                            </div>
+                            <!-- Torso -->
+                            <div class="char-torso">
+                                <div class="char-screen"></div>
+                            </div>
+                            <!-- Arms -->
+                            <div class="char-arm left" id="arm-left"></div>
+                            <div class="char-arm right" id="arm-right"></div>
+                        </div>
                     </div>
-                    <h2 class="pulse-text">Analyzing Problem...</h2>
-                    <p id="analysis-step">Detecting Equations...</p>
+
+                    <h2 class="processing-text" id="processing-text">Hmm, let me think...</h2>
+                    <p id="analysis-step" class="mono-text">Analyzing the problem...</p>
                 </div>
             </section>
 
-            <!-- Result View -->
+            <!-- RESULT VIEW (Preserved Functionality) -->
             <section id="view-result" class="view">
-                <div class="top-bar">
-                    <button class="icon-btn" id="back-to-home"><i class="ph ph-arrow-left"></i></button>
-                    <h2>Solution</h2>
-                    <button class="icon-btn"><i class="ph ph-share-network"></i></button>
+                <div class="result-header">
+                    <button class="icon-btn-ghost" id="back-to-home"><i class="ph ph-arrow-left"></i> Back</button>
+                    <h2>Analysis Report</h2>
+                    <button class="icon-btn-ghost"><i class="ph ph-export"></i></button>
                 </div>
 
-                <div class="result-content">
-                    <div class="problem-card glass-card">
-                        <span class="label">Problem</span>
-                        <div class="problem-image-preview" id="problem-preview"></div>
-                        <p class="problem-text" id="problem-text-display">...</p>
-                    </div>
-
-                    <div class="solution-card glass-card">
-                        <span class="label">Step-by-Step Solution</span>
-                        <div class="steps-container" id="steps-container">
-                            <!-- Steps generated by JS -->
+                <div class="result-grid">
+                    <div class="result-left">
+                        <div class="problem-card glass-panel">
+                            <span class="panel-label">Input Source</span>
+                            <div class="problem-image-preview" id="problem-preview"></div>
+                            <div class="problem-text-wrapper">
+                                <p class="problem-text" id="problem-text-display">...</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="answer-card glass-card highlight-border">
-                        <span class="label">Final Answer</span>
-                        <h1 id="final-answer" class="math-answer">...</h1>
-                    </div>
-
-                    <div class="explanation-card glass-card">
-                        <div class="card-header">
-                            <span class="label">Concept Explanation</span>
-                            <button class="voice-btn"><i class="ph ph-speaker-high"></i></button>
+                    <div class="result-right">
+                        <div class="answer-card glass-panel highlight-border">
+                            <span class="panel-label">Primary Intelligence</span>
+                            <h1 id="final-answer" class="math-answer">...</h1>
                         </div>
-                        <p id="concept-explanation">...</p>
+
+                        <div class="solution-card glass-panel">
+                            <span class="panel-label">Reasoning Chain</span>
+                            <div class="steps-container" id="steps-container">
+                                <!-- Steps generated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="explanation-card glass-panel">
+                            <div class="card-header">
+                                <span class="panel-label">Concept Breakdown</span>
+                                <button class="voice-btn"><i class="ph ph-speaker-high"></i></button>
+                            </div>
+                            <p id="concept-explanation">...</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- History View -->
+            <!-- HISTORY VIEW (Preserved Functionality) -->
             <section id="view-history" class="view">
                 <div class="top-bar">
-                    <h2>History</h2>
-                    <button class="icon-btn" id="clear-history"><i class="ph ph-trash"></i></button>
+                    <h2>Session Logs</h2>
+                    <button class="icon-btn-ghost" id="clear-history"><i class="ph ph-trash"></i> Clear</button>
                 </div>
-                <div class="history-list" id="history-container">
-                    <!-- History items injected here -->
-                    <div class="empty-state">No history yet</div>
+                <div class="history-list glass-panel" id="history-container">
+                    <!-- History items via JS -->
+                    <div class="empty-state">No prior session logs found</div>
                 </div>
             </section>
 
-            <!-- Settings View -->
+            <!-- SETTINGS VIEW (Preserved Functionality) -->
             <section id="view-settings" class="view">
                 <div class="top-bar">
-                    <h2>Settings</h2>
+                    <h2>System Preferences</h2>
                 </div>
                 <div class="settings-list">
-                    <div class="glass-card">
-                        <div class="setting-item">
-                            <span>Dark Mode</span>
-                            <div class="toggle-switch active"></div>
+                    <div class="glass-panel setting-row">
+                        <div class="setting-info">
+                            <span>Dark Mode Interface</span>
+                            <span class="setting-desc">Enable low-light optimization</span>
                         </div>
+                        <div class="toggle-switch active"></div>
                     </div>
-                    <div class="glass-card">
-                        <div class="setting-item">
-                            <span>Voice Explanation</span>
-                            <div class="toggle-switch"></div>
+                    <div class="glass-panel setting-row">
+                        <div class="setting-info">
+                            <span>Voice Output</span>
+                            <span class="setting-desc">Text-to-speech engine</span>
                         </div>
+                        <div class="toggle-switch"></div>
                     </div>
-                    <div class="glass-card">
-                        <div class="setting-item">
-                            <span>Haptic Feedback</span>
-                            <div class="toggle-switch active"></div>
+                    <div class="glass-panel setting-row">
+                        <div class="setting-info">
+                            <span>Haptic Response</span>
+                            <span class="setting-desc">Tactile feedback on interaction</span>
                         </div>
+                        <div class="toggle-switch active"></div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
+    <!-- Maintain JS Link -->
     <script src="js/app.js"></script>
+    <script>
+        // Simple script to wire up the new "Deploy Agent" button to the scanner view/trigger if needed
+        document.getElementById('hero-scan-trigger')?.addEventListener('click', () => {
+            // Scroll to scanner or trigger it
+            document.querySelector('.scanner-wrapper').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ===== SPLASH SCREEN LOGIC (Automatic) =====
+        (function () {
+            const splash = document.getElementById('splash-screen');
+            const eyelidTop = document.getElementById('eyelid-top');
+            const eyelidBottom = document.getElementById('eyelid-bottom');
+            const app = document.getElementById('app');
+
+            // Hide main app initially
+            app.style.opacity = '0';
+            app.style.transition = 'opacity 0.8s ease';
+
+            // Generate splash particles
+            const splashParticlesContainer = document.getElementById('splash-particles');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'splash-particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.width = (Math.random() * 3 + 1) + 'px';
+                p.style.height = p.style.width;
+                p.style.animationDuration = (Math.random() * 15 + 8) + 's';
+                p.style.animationDelay = (Math.random() * -10) + 's';
+                p.style.opacity = Math.random() * 0.4 + 0.1;
+                splashParticlesContainer.appendChild(p);
+            }
+
+            // Helper: perform one blink (close then open)
+            function blink(closeTime, openDelay) {
+                return new Promise(resolve => {
+                    // Close
+                    eyelidTop.classList.remove('blink-open');
+                    eyelidBottom.classList.remove('blink-open');
+                    eyelidTop.classList.add('blink-close');
+                    eyelidBottom.classList.add('blink-close');
+
+                    // Open after closeTime
+                    setTimeout(() => {
+                        eyelidTop.classList.remove('blink-close');
+                        eyelidBottom.classList.remove('blink-close');
+                        eyelidTop.classList.add('blink-open');
+                        eyelidBottom.classList.add('blink-open');
+                        setTimeout(resolve, openDelay);
+                    }, closeTime);
+                });
+            }
+
+            // Automatic blink sequence
+            async function runSplashSequence() {
+                // Eye starts closed
+                eyelidTop.classList.add('blink-close');
+                eyelidBottom.classList.add('blink-close');
+
+                // Wait 800ms, then open the eye for the first time (waking up)
+                await new Promise(r => setTimeout(r, 800));
+                eyelidTop.classList.remove('blink-close');
+                eyelidBottom.classList.remove('blink-close');
+                eyelidTop.classList.add('blink-open');
+                eyelidBottom.classList.add('blink-open');
+
+                // Wait 1s with eye open, then do a natural blink
+                await new Promise(r => setTimeout(r, 1000));
+                await blink(300, 600);
+
+                // Second blink (slightly faster, like a human adjusting)
+                await blink(250, 500);
+
+                // Third quick blink
+                await blink(200, 400);
+
+                // Splash fades out, app reveals
+                splash.classList.add('splash-exit');
+                app.style.opacity = '1';
+
+                // Remove splash from DOM
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 900);
+            }
+
+            runSplashSequence();
+        })();
+
+        // ===== 3D CAROUSEL LOGIC =====
+        (function () {
+            const slides = document.querySelectorAll('.carousel-3d-slide');
+            const dots = document.querySelectorAll('.carousel-3d-dots .dot');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+
+            function updateCarousel(index) {
+                currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+                const prevIndex = ((currentIndex - 1) + totalSlides) % totalSlides;
+                const nextIndex = (currentIndex + 1) % totalSlides;
+
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'prev-slide', 'next-slide');
+                    if (i === currentIndex) {
+                        slide.classList.add('active');
+                    } else if (i === prevIndex) {
+                        slide.classList.add('prev-slide');
+                    } else if (i === nextIndex) {
+                        slide.classList.add('next-slide');
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            // Navigation
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                updateCarousel(currentIndex - 1);
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                updateCarousel(currentIndex + 1);
+            });
+
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.getAttribute('data-slide'), 10);
+                    updateCarousel(idx);
+                });
+            });
+
+            // Keyboard nav
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    updateCarousel(currentIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+
+            // Init
+            updateCarousel(0);
+        })();
+    </script>
 </body>
 
 </html>
